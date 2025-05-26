@@ -14,4 +14,14 @@ public class LoadScene : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void paused()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void resume()
+    {
+        Time.timeScale = 1;
+    }
 }
