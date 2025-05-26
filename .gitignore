@@ -1,0 +1,34 @@
+# Unity generated
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.pidb
+*.booproj
+*.svd
+
+# Rider settings
+.idea/
+*.sln.iml
+
+# Crash and logs
+*.stacktrace
+
+# Others
+ExportedObj/
+*.apk
+*.unitypackage
