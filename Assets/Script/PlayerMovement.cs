@@ -57,6 +57,17 @@ public class PlayerMovement : MonoBehaviour
         UpdateHealthUI();
     }
 
+    
+    private void Start()
+    {
+    currentCoin = 0;
+
+    if (coinText != null)
+    {
+        coinText.text = currentCoin.ToString();
+    }
+    }
+
     private void OnEnable()
     {
         playerController.Enable();
