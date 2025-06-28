@@ -8,6 +8,7 @@ public class LoadScene : MonoBehaviour
     
     public GameObject mainMenuUI;
     public GameObject levelSelectionUI;
+    public GameObject pausePanel;
 
     public void ShowLevelSelection()
     {
@@ -24,7 +25,14 @@ public class LoadScene : MonoBehaviour
 
     public void ChangeScene(string scene)
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(scene);
+    }
+
+    public void LoadMainMenu()
+    {
+    Time.timeScale = 1f; // pastikan game tidak freeze
+    SceneManager.LoadScene("MainMenu"); // ganti dengan nama scene Main Menu kamu
     }
 
     public void quitGame()
@@ -34,11 +42,15 @@ public class LoadScene : MonoBehaviour
 
     public void paused()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
+        if (pausePanel != null)
+            pausePanel.SetActive(true);
     }
 
     public void resume()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
+        if (pausePanel != null)
+            pausePanel.SetActive(false); // ini yang kamu butuhin!
     }
 }
