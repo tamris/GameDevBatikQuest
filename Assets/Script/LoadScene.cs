@@ -5,7 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-    public void ChangeScene(string scene) 
+    
+    public GameObject mainMenuUI;
+    public GameObject levelSelectionUI;
+
+    public void ShowLevelSelection()
+    {
+        mainMenuUI.SetActive(false);
+        levelSelectionUI.SetActive(true);
+    }
+
+
+    public void ShowMainMenu()
+    {
+    levelSelectionUI.SetActive(false);
+    mainMenuUI.SetActive(true);
+    }
+
+    public void ChangeScene(string scene)
     {
         SceneManager.LoadScene(scene);
     }
