@@ -10,17 +10,26 @@ public class LoadScene : MonoBehaviour
     public GameObject levelSelectionUI;
     public GameObject pausePanel;
 
+    public GameObject creditsPanel; 
+
     public void ShowLevelSelection()
     {
         mainMenuUI.SetActive(false);
+        creditsPanel.SetActive(false); 
         levelSelectionUI.SetActive(true);
+    }
+
+    public void ShowCredits() // tambahkan ini
+    {
+        mainMenuUI.SetActive(false);
+        creditsPanel.SetActive(true);
     }
 
 
     public void ShowMainMenu()
     {
-    levelSelectionUI.SetActive(false);
-    mainMenuUI.SetActive(true);
+        levelSelectionUI.SetActive(false);
+        mainMenuUI.SetActive(true);
     }
 
     public void ChangeScene(string scene)
@@ -37,6 +46,7 @@ public class LoadScene : MonoBehaviour
 
     public void quitGame()
     {
+        Debug.Log("Quit Game dipanggil.");
         Application.Quit();
     }
 

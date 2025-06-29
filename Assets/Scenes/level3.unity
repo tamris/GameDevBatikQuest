@@ -17342,7 +17342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c4acbedad07204fa1246fb718a8bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: level3
+  sceneToLoad: GameClear
   delayBeforeTeleport: 1.5
   batikRequired: 8
   warningCanvas: {fileID: 652432645}
