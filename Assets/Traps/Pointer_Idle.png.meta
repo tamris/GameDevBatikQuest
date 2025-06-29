@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a2c4b564d814e1d42b5ab00d1ee0b35d
+guid: 7fa8f8287f7b9394b986b50754cf9c9b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GraveRobber_death_0
+      name: Pointer_Idle_0
       rect:
         serializedVersion: 2
-        x: 6
+        x: 13
         y: 0
-        width: 19
-        height: 33
+        width: 20
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49d4d1c3b46977e4f8e715db9b77bcca
-      internalID: -440761435
+      spriteID: 6e3c31f984407894cb3fc22eb3f23023
+      internalID: -1932545839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GraveRobber_death_1
+      name: Pointer_Idle_1
       rect:
         serializedVersion: 2
-        x: 52
+        x: 61
         y: 0
-        width: 23
-        height: 28
+        width: 20
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5585066839285b84cbb345f2ecf95e4e
-      internalID: 748505952
+      spriteID: fc37d4e256057ec448c350d2bc57c439
+      internalID: 1266207849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GraveRobber_death_2
+      name: Pointer_Idle_2
       rect:
         serializedVersion: 2
-        x: 99
+        x: 109
         y: 0
-        width: 32
-        height: 24
+        width: 20
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd183ab262d5f9b44a849d1935199ecd
-      internalID: -179917379
+      spriteID: eb9aac2a1346b1e42ad96a46376163a0
+      internalID: -1123622394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GraveRobber_death_3
+      name: Pointer_Idle_3
       rect:
         serializedVersion: 2
-        x: 147
+        x: 157
         y: 0
-        width: 35
-        height: 18
+        width: 20
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bbb923248aae664ea97356dac06581c
-      internalID: 1220413101
+      spriteID: cf2d4e2035981364a9aa3d018187d06f
+      internalID: -900451603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GraveRobber_death_4
+      name: Pointer_Idle_4
       rect:
         serializedVersion: 2
-        x: 195
+        x: 205
         y: 0
-        width: 34
-        height: 15
+        width: 20
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ee920df446394c4c953d71d60e3f3f7
-      internalID: 913296026
+      spriteID: 75dc2c4e2d0e5a042a3af13bbe4b63b1
+      internalID: 533739632
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GraveRobber_death_5
+      name: Pointer_Idle_5
       rect:
         serializedVersion: 2
-        x: 243
+        x: 253
         y: 0
-        width: 35
-        height: 12
+        width: 20
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,8 +236,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dae4104c2acce124789cc8b1b0893871
-      internalID: -1472557373
+      spriteID: a480efd0f3f2f924cba15b5d0c2e568f
+      internalID: 1792280801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pointer_Idle_6
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 0
+        width: 20
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ade205eeb338a7c40b48f279a0572773
+      internalID: -408293781
       vertices: []
       indices: 
       edges: []
@@ -253,12 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GraveRobber_death_0: -440761435
-      GraveRobber_death_1: 748505952
-      GraveRobber_death_2: -179917379
-      GraveRobber_death_3: 1220413101
-      GraveRobber_death_4: 913296026
-      GraveRobber_death_5: -1472557373
+      Pointer_Idle_0: -1932545839
+      Pointer_Idle_1: 1266207849
+      Pointer_Idle_2: -1123622394
+      Pointer_Idle_3: -900451603
+      Pointer_Idle_4: 533739632
+      Pointer_Idle_5: 1792280801
+      Pointer_Idle_6: -408293781
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

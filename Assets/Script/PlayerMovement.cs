@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.UI;
 
-
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Movement")]
@@ -21,8 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private float mobileInputX = 0f;
     private Vector2 moveInput;
 
-    // Disesuaikan dengan animator kamu
-    private enum MovementState { idle = 0, run = 1, jump = 2, attack = 3 }
+    private enum MovementState { idle = 0, run = 1, jump = 2, attack = 3, death = 4 }
 
     [Header("Jump Settings")]
     [SerializeField] private LayerMask jumpableGround;
@@ -44,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isKnockedBack = false;
 
     private bool isAttacking = false;
+    private bool isDead = false;
 
     private void Awake()
     {
@@ -57,15 +56,13 @@ public class PlayerMovement : MonoBehaviour
         UpdateHealthUI();
     }
 
-    
     private void Start()
     {
-    currentCoin = 0;
-
-    if (coinText != null)
-    {
-        coinText.text = currentCoin.ToString();
-    }
+        currentCoin = 0;
+        if (coinText != null)
+        {
+            coinText.text = currentCoin.ToString();
+        }
     }
 
     private void OnEnable()
@@ -84,6 +81,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (isDead) return;
+
         if (Application.isMobilePlatform)
         {
             moveInput = new Vector2(mobileInputX, 0f);
@@ -96,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isKnockedBack || isAttacking) return;
+        if (isKnockedBack || isAttacking || isDead) return;
 
         Vector2 targetVelocity = new Vector2((moveInput.x + mobileInputX) * moveSpeed, rb.velocity.y);
         rb.velocity = targetVelocity;
@@ -106,6 +105,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAnimation()
     {
+        if (isDead)
+        {
+            anim.SetInteger("state", (int)MovementState.death);
+            return;
+        }
+
         MovementState state;
 
         float horizontal = moveInput.x != 0 ? moveInput.x : mobileInputX;
@@ -135,6 +140,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        if (isDead) return;
+
         if (isGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -143,12 +150,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Attack()
     {
-        if (isAttacking) return;
+        if (isAttacking || isDead) return;
 
         isAttacking = true;
         anim.SetInteger("state", (int)MovementState.attack);
 
-        // Atur kembali ke idle setelah animasi selesai (asumsi durasi attack 0.5 detik, bisa disesuaikan)
         StartCoroutine(ResetAttackState());
     }
 
@@ -176,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void MobileJump()
     {
-        if (isGrounded())
+        if (isGrounded() && !isDead)
         {
             Jump();
         }
@@ -184,29 +190,31 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(int damage, Vector2 direction)
     {
-        if (isKnockedBack) return;
+        if (isKnockedBack || isDead) return;
 
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            isDead = true;
+
+            // Stop movement and trigger death animation
+            rb.velocity = Vector2.zero;
+            anim.SetInteger("state", (int)MovementState.death);
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            coll.enabled = false;
+
             Debug.Log("Player Mati");
+
+            // Optional: Restart level after delay
+            StartCoroutine(HandleDeath());
         }
-
-        StartCoroutine(HandleKnockback(direction.normalized));
-        UpdateHealthUI();
-    }
-
-    private void UpdateHealthUI()
-    {
-        // if (healthText != null)
-        //     healthText.text = "Health: " + currentHealth;
-
-        if (healthBarFill != null)
+        else
         {
-            float fillAmount = Mathf.Clamp01((float)currentHealth / maxHealth);
-            healthBarFill.fillAmount = fillAmount;
+            StartCoroutine(HandleKnockback(direction.normalized));
         }
+
+        UpdateHealthUI();
     }
 
     private IEnumerator HandleKnockback(Vector2 direction)
@@ -222,12 +230,27 @@ public class PlayerMovement : MonoBehaviour
         isKnockedBack = false;
     }
 
+    private IEnumerator HandleDeath()
+    {
+        yield return new WaitForSeconds(1.5f); // tunggu animasi death selesai
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void addBatik(int amount)
     {
         currentCoin += amount;
         if (coinText != null)
         {
             coinText.text = "" + currentCoin.ToString();
+        }
+    }
+
+    private void UpdateHealthUI()
+    {
+        if (healthBarFill != null)
+        {
+            float fillAmount = Mathf.Clamp01((float)currentHealth / maxHealth);
+            healthBarFill.fillAmount = fillAmount;
         }
     }
 }
