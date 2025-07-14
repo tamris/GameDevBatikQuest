@@ -148,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Attack()
+    public void Attack()
     {
         if (isAttacking || isDead) return;
 

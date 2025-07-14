@@ -5,17 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-    
+
     public GameObject mainMenuUI;
     public GameObject levelSelectionUI;
     public GameObject pausePanel;
+    public GameObject creditsPanel;
 
-    public GameObject creditsPanel; 
+    [Header("Game Over")]
+    public GameObject gameOverPanel;
 
     public void ShowLevelSelection()
     {
         mainMenuUI.SetActive(false);
-        creditsPanel.SetActive(false); 
+        creditsPanel.SetActive(false);
         levelSelectionUI.SetActive(true);
     }
 
@@ -40,8 +42,8 @@ public class LoadScene : MonoBehaviour
 
     public void LoadMainMenu()
     {
-    Time.timeScale = 1f; // pastikan game tidak freeze
-    SceneManager.LoadScene("MainMenu"); // ganti dengan nama scene Main Menu kamu
+        Time.timeScale = 1f; // pastikan game tidak freeze
+        SceneManager.LoadScene("MainMenu"); // ganti dengan nama scene Main Menu kamu
     }
 
     public void quitGame()
@@ -62,5 +64,18 @@ public class LoadScene : MonoBehaviour
         Time.timeScale = 1f;
         if (pausePanel != null)
             pausePanel.SetActive(false); // ini yang kamu butuhin!
+    }
+    
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(true);
+    }
+
+    public void RetryLevel()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
